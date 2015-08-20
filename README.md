@@ -64,6 +64,14 @@ Update the  generated script  to point  to container's  version of  ERTS. This  
 RUN sed -i s/ERTS_VSN=.\*/ERTS_VSN=\"7.0.2\"/   /$APP_NAME/bin/$APP_NAME
 '''
 
+You can test locally if you have  docker installed:
+'''
+>MIX_ENV=prod mix release
+>cd  rel
+>sudo docker build -t the_phoenix_and_the_beanstalk  .
+>sudo docker run --rm -it -p 4000:4000  the_phoenix_and_the_beanstalk
+'''
+
 ##Set up  our  Elastic Beanstalk environment
 
 ```
@@ -72,6 +80,13 @@ $eb init
 eb init thinks you are using nodejs (because of brunch I suspect). Select No and then choose Docker.
 
 See the [configure  the  EB CLI](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-configuration.html)
+
+
+Next [create  a elasticbeanstalk environment](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html#ebcli3-basics)
+'''
+$eb create
+'''
+The deployment will fail  at  this  point,  don't  worry this is ok.  
 
 By  default  EB  deploy will upload  the  source  code  from the latest  git  commit. This is not what we want,  fortunately  you can configure it  to  [deploy a  zip  file](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-configuration.html#eb-cli3-artifact) instead.
 
@@ -84,10 +99,9 @@ and  copy lib/mix/tasks/eb_zip_release.ex from this  repository.
 
 Creates  a  zip file  in  the  rel director for  upload to  Amazon Elastic Beanstalk
 
-#Update the elasticbeanstalk config.
-
+#Update the elasticbeanstalk config to deploy our zip.
 Update  .elasticbeanstalk/config.yml
-  Add:
+Add the  following (replacing  name  and  version):
 '''
 deploy:
   artifact: rel/#{name}-#{version}.zip
@@ -104,7 +118,9 @@ Then deploy with
 $eb  deploy
 '''
 
-There is a  gotcha here. When  you do eb deploy it will only  upload  the zip file if there  has a commit to git since the last time eb  deploy was run. Even if you  are deploying an  artifact not your source from  git.
+There is a  gotcha here. When  you do eb deploy it will only  upload  the zip file if there  has a commit to git since the last time eb  deploy was run. Even if you  are deploying an  artifact not your source from  git. 
+
+
 
 
 
