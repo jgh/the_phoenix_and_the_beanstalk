@@ -118,7 +118,8 @@ Then deploy with
 $eb  deploy
 '''
 
-There is a  gotcha here. When  you do eb deploy it will only  upload  the zip file if there  has a commit to git since the last time eb  deploy was run. Even if you  are deploying an  artifact not your source from  git. 
+There is a  gotcha here. When  you do eb deploy it will only  upload  the zip file if there  has a commit to git since the last time eb  deploy was run. Even if you  are deploying an  artifact not your source from  git. If it does upload you will see a progress bar.
+  
 
 
 

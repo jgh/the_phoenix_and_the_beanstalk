@@ -25,7 +25,7 @@ deploy:
 
     File.rm(target_path)
     File.cd! release_dir, fn ->
-      release_files = ["Dockerfile",
+        release_files = ["Dockerfile",
           # "Dockerrun.aws.json",
           "#{name}/#{name}-#{version}.tar.gz"]
 
