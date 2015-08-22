@@ -13,9 +13,10 @@ use Mix.Config
 # which you typically run after static files are built.
 config :the_phoenix_and_the_beanstalk, ThePhoenixAndTheBeanstalk.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
-
+  url: [host: "localhost",
+        port: {:system, "PORT"}],
+  cache_static_manifest: "priv/static/manifest.json",
+  server: true
 # Do not print debug messages in production
 config :logger, level: :info
 

@@ -16,10 +16,11 @@ ENV RELX_REPLACE_OS_VARS true
 #EB parses the  EXPOSE  value  in this file and  uses  to generate  nginx config.  It  can't  be  a ENV  variable
 EXPOSE 4000
 
-ADD $APP_NAME/$APP_NAME-$APP_VERSION.tar.gz  /$APP_NAME
+
+ADD $APP_NAME/$APP_NAME-$APP_VERSION.tar.gz /$APP_NAME/
 
 #Use alpine crypto lib. to avoid error message about  mi  ssing openssl. Asuming the .so is different when compiled for alpine
-RUN rm -rf  /$APP_NAME/lib/crypt0-3.6  && cp  -r  /usr/lib/erlang/lib/crypto-3.6 /$APP_NAME/lib
+RUN rm -rf /$APP_NAME/lib/crypto-3.6  && cp  -r  /usr/lib/erlang/lib/crypto-3.6 /$APP_NAME/lib
 #Update script  to point  to container's  version of  ERTS
 RUN sed -i s/ERTS_VSN=.*/ERTS_VSN=\"7.0.2\"/   /$APP_NAME/bin/$APP_NAME
 
