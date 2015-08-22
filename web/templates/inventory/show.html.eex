@@ -1,0 +1,18 @@
+<h2>Show inventory</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @inventory.name %>
+  </li>
+
+  <li>
+    <strong>Quantity:</strong>
+    <%= @inventory.quantity %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: inventory_path(@conn, :edit, @inventory) %>
+<%= link "Back", to: inventory_path(@conn, :index) %>

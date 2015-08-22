@@ -1,0 +1,28 @@
+<h2>Listing inventory</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for inventory <- @inventory do %>
+    <tr>
+      <td><%= inventory.name %></td>
+      <td><%= inventory.quantity %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: inventory_path(@conn, :show, inventory), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: inventory_path(@conn, :edit, inventory), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: inventory_path(@conn, :delete, inventory), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New inventory", to: inventory_path(@conn, :new) %>

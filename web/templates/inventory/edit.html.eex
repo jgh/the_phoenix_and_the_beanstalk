@@ -1,0 +1,6 @@
+<h2>Edit inventory</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: inventory_path(@conn, :update, @inventory) %>
+
+<%= link "Back", to: inventory_path(@conn, :index) %>
