@@ -23,6 +23,6 @@ ADD $APP_NAME /$APP_NAME/
 #Use alpine crypto lib. to avoid error message about  mi  ssing openssl. Asuming the .so is different when compiled for alpine
 RUN rm -rf /$APP_NAME/lib/crypto-3.6  && cp  -r  /usr/lib/erlang/lib/crypto-3.6 /$APP_NAME/lib
 #Update script  to point  to container's  version of  ERTS
-RUN sed -i s/ERTS_VSN=.*/ERTS_VSN=\"7.0.2\"/   /$APP_NAME/bin/$APP_NAME
+RUN sed -i s/ERTS_VSN=.*/ERTS_VSN=\"7.0.2\"/ /$APP_NAME/bin/$APP_NAME
 
 CMD trap exit TERM; /$APP_NAME/bin/$APP_NAME foreground & wait
