@@ -60,3 +60,14 @@ config :logger, level: :info
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 import_config "prod.secret.exs"
+
+# Configure your database
+# ${} parameters are replaced  at  runtime by start script
+config :the_phoenix_and_the_beanstalk, ThePhoenixAndTheBeanstalk.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  hostname:   "${RDS_HOSTNAME}",
+  port:       "${RDS_PORT}",
+  username:   "${RDS_USERNAME}",
+  password:   "${RDS_PASSWORD}",
+  database:   "${RDS_DB_NAME}",
+  pool_size: 20

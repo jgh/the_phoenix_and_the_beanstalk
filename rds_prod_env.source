@@ -1,0 +1,18 @@
+#These values  are  found on  RDS  console  in the instance Configuration Details
+#Endpoint:
+export RDS_HOSTNAME=aa1i6h0jg8spac5.cjvsybyxlbrw.ap-southeast-2.rds.amazonaws.com
+#Port (usually always standard  postgres  port  5432)
+export RDS_PORT=5432
+#DB Name (usually always ebdb)
+export RDS_DB_NAME=ebdb
+#Username:
+export RDS_USERNAME=thephoenix
+#Needs to  be the password entered when creating the database.
+echo Enter RDS_PASSWORD:
+read -s RDS_PASSWORD
+
+export RDS_PASSWORD
+
+echo Usage:
+echo 'psql --host=$RDS_HOSTNAME --port=$RDS_PORT --username=$RDS_USERNAME --password --dbname=$RDS_DB_NAME'
+echo MIX_ENV=prod_dbm mix ecto.migrate
