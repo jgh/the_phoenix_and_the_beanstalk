@@ -25,10 +25,9 @@ deploy:
 
     File.rm(target_path)
     File.cd! release_dir, fn ->
-        release_files = ["Dockerfile",
-          # "Dockerrun.aws.json",
-          "#{name}/#{name}-#{version}.tar.gz"]
-
+      release_files =
+        Path.wildcard("{Dockerfile,Dockerrun.aws.json}") ++
+        Path.wildcard("#{name}/{bin,lib,releases}")
       files =  release_files
         |> Enum.map&(String.to_char_list(&1))
 
