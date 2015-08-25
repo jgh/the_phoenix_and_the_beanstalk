@@ -28,4 +28,5 @@ erl_crash.dump
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+p!.elasticbeanstalk/*.global.yml
+!.elasticbeanstalk/config.yml

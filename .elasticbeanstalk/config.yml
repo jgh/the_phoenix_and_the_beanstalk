@@ -1,0 +1,12 @@
+branch-defaults:
+  master:
+    environment: null
+deploy:
+  artifact: rel/the_phoenix_and_the_beanstalk-0.0.1.zip
+global:
+  application_name: the_phoenix_and_the_beanstalk
+  default_ec2_keyname: aws-eb2
+  default_platform: Docker 1.6.2
+  default_region: ap-southeast-2
+  profile: eb-cli
+  sc: git
