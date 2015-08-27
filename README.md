@@ -2,6 +2,8 @@
 
 This is a series of notes taken as I deploy a Phoenix application to a docker container running on AWS Elastic Beanstalk.
 
+It is the first time I have used Phoenix and Elixir so I may have gone about it the wrong way. Feedback is welcome.
+
 ##Prerequisites
  1. [Phoenix](http://www.phoenixframework.org/)  (I'm using 0.17 )
  2. [git](https://git-scm.com/)
@@ -333,3 +335,8 @@ $eb deploy
 and check out the new database backed pages
 
 http://the-phoenix-and-the.elasticbeanstalk.com/inventory
+
+#Todo
+* Create a development docker container with alpine. This should allow me to remove the crytpo-3.6 hack.
+* See if it is possible to get websockets working with ELB.
+* Create some mix tasks to set up all of the above automatically.
